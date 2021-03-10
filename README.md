@@ -1,48 +1,35 @@
 # Create a JavaScript Action
+> An opinionated alternative template to [`actions/javascript-action`](https://github.com/actions/javascript-action) to bootstrap the creation of a JavaScript action. 🚀
 
-<p align="center">
-  <a href="https://github.com/actions/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/actions/javascript-action/workflows/units-test/badge.svg"></a>
-</p>
+<a href="https://github.com/github-developer/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/github-developer/javascript-action/actions/workflows/test.yml/badge.svg"></a>
+<a href="https://img.shields.io/github/v/release/github-developer/javascript-action"><img alt="release" src="https://img.shields.io/github/v/release/github-developer/javascript-action"></a>
+<a href="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg"><img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg"></a>
 
-Use this template to bootstrap the creation of a JavaScript action.:rocket:
+Use this template to bootstrap the creation of a JavaScript action. :rocket: Alternative to [`actions/javascript-action`](https://github.com/actions/javascript-action).
 
-This template includes tests, linting, a validation workflow, publishing, and versioning guidance.
+This template includes [release automation](.github/workflows), [tests](tests), linting, publishing, starter docs, and versioning guidance.
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+## Usage
 
-## Create an action from this template
+Reference the published major/minor/patch tag, e.g. `v1`:
 
-Click the `Use this Template` and provide the new repo details for your action
-
-## Code in Main
-
-Install the dependencies
-
-```bash
-npm install
+```yaml
+uses: github-developer/javascript-action@v1
+with:
+  milliseconds: 1000
 ```
 
-Run the tests :heavy_check_mark:
+See the [actions tab](https://github.com/github-developer/javascript-action/actions) for runs of this action! :rocket:
 
-```bash
-$ npm test
+## Update your action metadata in `action.yml`
 
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-...
-```
-
-## Change action.yml
-
-The action.yml defines the inputs and output for your action.
+[`action.yml`](action.yml) defines the inputs and output for your action.
 
 Update the action.yml with your name, description, inputs and outputs for your action.
 
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
+See the [documentation](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions).
 
-## Change the Code
+## Write your action code in `lib`
 
 Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
 
@@ -64,53 +51,42 @@ run()
 
 See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
 
-## Package for distribution
+## Test your action in `tests`
 
-GitHub Actions will run the entry point from the action.yml. Packaging assembles the code into one file that can be checked in to Git, enabling fast and reliable execution and preventing the need to check in node_modules.
+[Jest](https://jestjs.io/) and [Nock](https://github.com/nock/nock) are included as suggestions for test and mocking frameworks.
 
-Actions are run from GitHub repos.  Packaging the action will create a packaged action in the dist folder.
+A sample [Unit Test workflow](.github/workflows/test.yml) is provided which runs on every pull request and push to the `main` branch.
 
-Run prepare
+## Automate releases with GitHub Actions
 
-```bash
-npm run prepare
-```
+The entrypoint to your action is defined by `runs.using` in `action.yml`.
 
-Since the packaged index.js is run from the dist folder.
+This project uses a `prepare` script leveraging `@vercel/ncc` to compile and package the code into one minified `dist/index.js` file, enabling fast and reliable execution and preventing the need to check in the whole dependency tree in `node_modules`.
 
-```bash
-git add dist
-```
+Here, `dist` is intentionally _not_ committed to Git branches for three reasons:
+1. Encourage users to reference your action using [semantically versioned](https://semver.org/) tags like `v1`, `v1.1.5`, etc. instead of branches ([docs](https://docs.github.com/en/actions/creating-actions/about-actions#using-tags-for-release-management)). 
+2. Avoid a security vulnerability attack vector by encouraging community contributions to source code only, ignoring proposed compiled release assets.
+3. Let automation do the hard part 🤖.
 
-## Create a release branch
+A sample [Publish workflow](.github/workflows/publish.yml) is provided which runs on a `release` event to compile and package source code into `dist`, and force push major and minor tag versions according to the semantic version of the release. You can kick off this workflow and publish to GitHub Marketplace simply by [using the GitHub UI](https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace#publishing-an-action) to create a new semantically versioned release like `v1.0.3`.
 
-Users shouldn't consume the action from master since that would be latest code and actions can break compatibility between major versions.
+## Commit to open source maintainership
 
-Checkin to the v1 release branch
+A healthy open source community starts with communication. Either in this repository or in your organization's `.github` repository, we recommend reviewing, editing, and adopting:
+- `CODE_OF_CONDUCT.md` for how to engage in community
+- `CONTRIBUTING.md` for how to contribute to this project
+- `LICENSE.md` for how to legally use and contribute to the project
+- `SECURITY.md` for responsibly disclosing vulnerabilities
+- [Issue and pull request templates](https://docs.github.com/en/github/building-a-strong-community/about-issue-and-pull-request-templates)
 
-```bash
-git checkout -b v1
-git commit -a -m "v1 release"
-```
+Issues and pull requests from the open source community should be attended to in a prompt, friendly, and proactive manner. Two sample workflows, [stale](.github/workflows/stale.yml) and [labeler](.github/workflows/labeler.yml) are provided to help with two small repetitious tasks. 
 
-```bash
-git push origin v1
-```
+See [Open Source Guides](https://opensource.guide/best-practices/) for more guidance on maintaining a strong community.
 
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
+## License
 
-Your action is now published! :rocket:
+[MIT](LICENSE.md)
 
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
+## Contributing
 
-## Usage
-
-You can now consume the action by referencing the v1 branch
-
-```yaml
-uses: actions/javascript-action@v1
-with:
-  milliseconds: 1000
-```
-
-See the [actions tab](https://github.com/actions/javascript-action/actions) for runs of this action! :rocket:
+Pull requests are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for more.
