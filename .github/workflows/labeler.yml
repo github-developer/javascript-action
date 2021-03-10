@@ -1,0 +1,15 @@
+##
+# Label incoming pull requests according to configuration in .github/labeler.yml
+##
+name: Pull Request Labeler
+on:
+- pull_request_target
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+    # See documentation: https://github.com/actions/labeler
+    - uses: actions/labeler@v3
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
