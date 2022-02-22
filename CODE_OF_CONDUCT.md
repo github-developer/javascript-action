@@ -1,10 +1,3 @@
-> Note: this is an example code of conduct that you or your organization might review, edit, and adopt.
-> 
-> Read more here about codes of conduct here:
-> - https://docs.github.com/en/github/building-a-strong-community/adding-a-code-of-conduct-to-your-project
-> - https://www.contributor-covenant.org/
-
-
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
@@ -66,8 +59,7 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at
-opensource+github-developer/javascript-action@github.com.
+reported to the community leaders responsible for enforcement.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
