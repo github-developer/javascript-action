@@ -1,5 +1,5 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Exact Dependency Checker'
+description: 'Validates whether a project uses version-specific dependencies only'
 inputs:
   milliseconds:  # id of input
     description: 'number of milliseconds to wait'
