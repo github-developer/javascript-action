@@ -1,8 +1,9 @@
 # Exact dependency checker
 
-<a href="https://github.com/github-developer/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/github-developer/javascript-action/actions/workflows/test.yml/badge.svg"></a>
-<a href="https://img.shields.io/github/v/release/github-developer/javascript-action"><img alt="release" src="https://img.shields.io/github/v/release/github-developer/javascript-action"></a>
-<a href="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg"><img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg"></a>
+<a href="https://github.com/matheusjardimb/js-exact-dependency-action/actions"><img alt="javscript-action status" src="https://github.com/matheusjardimb/js-exact-dependency-action/actions/workflows/test.yml/badge.svg"></a>
+<a href="https://img.shields.io/github/v/release/matheusjardimb/js-exact-dependency-action"><img alt="release" src="https://img.shields.io/github/v/release/matheusjardimb/js-exact-dependency-action"></a>
+
+[//]: # (<a href="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg"><img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg"></a>)
 
 Use this template to bootstrap the creation of a JavaScript action. :rocket: Alternative
 to [`actions/javascript-action`](https://github.com/actions/javascript-action).
@@ -15,7 +16,7 @@ versioning guidance.
 Reference the published [semantic tag](https://semver.org/), e.g. major:
 
 ```yaml
-uses: github-developer/javascript-action@v1
+uses: matheusjardimb/js-exact-dependency-action@v1
 with:
   milliseconds: 1000
 ```
@@ -23,7 +24,7 @@ with:
 or minor:
 
 ```yaml
-uses: github-developer/javascript-action@v1.0
+uses: matheusjardimb/js-exact-dependency-action@v1.0
 with:
   milliseconds: 1000
 ```
@@ -31,12 +32,12 @@ with:
 or patch:
 
 ```yaml
-uses: github-developer/javascript-action@v1.0.0
+uses: matheusjardimb/js-exact-dependency-action@v1.0.0
 with:
   milliseconds: 1000
 ```
 
-See the [actions tab](https://github.com/github-developer/javascript-action/actions) for runs of this action! :rocket:
+See the [actions tab](https://github.com/matheusjardimb/js-exact-dependency-action/actions) for runs of this action! :rocket:
 
 ## Development
 
