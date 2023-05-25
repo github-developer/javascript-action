@@ -1,7 +1,10 @@
 name: 'Exact Dependency Checker'
 description: 'Validates whether a project uses version-specific dependencies only'
+branding:
+  color: "green"
+  icon: "check-circle"
 inputs:
-  milliseconds:  # id of input
+  milliseconds: # id of input
     description: 'number of milliseconds to wait'
     required: true
     default: '1000'
@@ -11,3 +14,6 @@ outputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+
+
+
